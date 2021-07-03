@@ -8,7 +8,8 @@ char s[1];
 short int r;
 short int szc;
 short int l = 1;
-short int step = 0;
+int step = 0;
+int lvlstep = 0;
 char sy;
 short int x = 1;
 short int y = 1;
@@ -66,6 +67,7 @@ void mapout() {
         }
         cout << endl;
     }
+    cout << "Level Steps: " << lvlstep << endl;
     cout << "Steps: " << step << endl;
 }
 void clear() {
@@ -105,6 +107,7 @@ void dbutton() {
         {
             x++;
             step++;
+            lvlstep++;
             map[y][x - 1] = ' ';
             map[y][x] = b;
         }
@@ -118,6 +121,7 @@ void abutton() {
         if (x != 0 && map[y][x - 1] != '#')
         {
             x--;
+            lvlstep++;
             step++;
             map[y][x + 1] = ' ';
             map[y][x] = b;
@@ -131,6 +135,7 @@ void sbutton() {
         system("cls");
         if (y != a - 1 && map[y + 1][x] != '#')
         {
+            lvlstep++;
             step++;
             y++;
             map[y - 1][x] = ' ';
@@ -145,6 +150,7 @@ void wbutton() {
         system("cls");
         if (y != 0 && map[y - 1][x] != '#')
         {
+            lvlstep++;
             step++;
             y--;
             map[y + 1][x] = ' ';
@@ -160,6 +166,7 @@ void levelup() {
         raandmap();
         x = 1;
         y = 1;
+        lvlstep= 0;
         l++;
         map[y][x] = b;
         mapout();
