@@ -8,6 +8,7 @@ char s[1];
 short int r;
 short int szc;
 short int l = 1;
+short int step = 0;
 char sy;
 short int x = 1;
 short int y = 1;
@@ -65,6 +66,7 @@ void mapout() {
         }
         cout << endl;
     }
+    cout << "Steps: " << step << endl;
 }
 void clear() {
     for (int i = 1; i < szc; i++) {
@@ -102,6 +104,7 @@ void dbutton() {
         if (x != a - 1 && map[y][x + 1] != '#')
         {
             x++;
+            step++;
             map[y][x - 1] = ' ';
             map[y][x] = b;
         }
@@ -115,6 +118,7 @@ void abutton() {
         if (x != 0 && map[y][x - 1] != '#')
         {
             x--;
+            step++;
             map[y][x + 1] = ' ';
             map[y][x] = b;
         }
@@ -127,6 +131,7 @@ void sbutton() {
         system("cls");
         if (y != a - 1 && map[y + 1][x] != '#')
         {
+            step++;
             y++;
             map[y - 1][x] = ' ';
             map[y][x] = b;
@@ -140,6 +145,7 @@ void wbutton() {
         system("cls");
         if (y != 0 && map[y - 1][x] != '#')
         {
+            step++;
             y--;
             map[y + 1][x] = ' ';
             map[y][x] = b;
@@ -192,7 +198,6 @@ int main(){
     raandmap();
 
     gameplay();
-
 
     system("pause");
     return 0;
